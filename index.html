@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f6fbf9" />
+  <meta name="description" content="An Tâm — kết nối bạn với đội ngũ tư vấn sức khỏe và đặt lịch khám thuận tiện." />
+  <title>An Tâm — Chăm sóc sức khỏe cùng bạn</title>
+  <style>
+    :root {
+      --ink: #173a37;
+      --muted: #657b77;
+      --teal: #167c70;
+      --teal-dark: #10665c;
+      --mint: #e8f5f0;
+      --paper: #f6fbf9;
+      --white: #fff;
+      --line: #e2ece8;
+      --coral: #e87c62;
+      --shadow: 0 18px 55px rgba(27, 73, 65, .09);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; }
+    button, input, select, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, calc(100% - 44px)); margin-inline: auto; }
+    .topbar { height: 78px; display: flex; align-items: center; background: rgba(255,255,255,.82); border-bottom: 1px solid rgba(226,236,232,.8); }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-size: 20px; font-weight: 800; letter-spacing: -.5px; }
+    .brand-mark { width: 39px; height: 39px; border-radius: 14px; display: grid; place-items: center; color: white; background: var(--teal); box-shadow: 0 7px 16px #167c7033; }
+    .brand-mark svg { width: 22px; }
+    .nav-links { display: flex; align-items: center; gap: 32px; color: var(--muted); font-size: 14px; font-weight: 600; }
+    .nav-links a:hover { color: var(--teal); }
+    .button { border: 0; border-radius: 12px; padding: 12px 19px; background: var(--teal); color: white; font-weight: 700; cursor: pointer; transition: .2s ease; display: inline-flex; align-items: center; justify-content: center; gap: 9px; }
+    .button:hover { background: var(--teal-dark); transform: translateY(-1px); }
+    .button-outline { background: white; color: var(--teal); border: 1px solid #cfe2dc; }
+    .button-outline:hover { background: var(--mint); }
+    .button-small { padding: 10px 15px; font-size: 14px; }
+    .hero { padding: 70px 0 62px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; align-items: center; gap: 56px; }
+    .eyebrow { color: var(--teal); display: inline-flex; gap: 8px; align-items: center; font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .eyebrow-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--coral); }
+    h1 { font-size: clamp(42px, 5.3vw, 66px); line-height: 1.08; letter-spacing: -2.8px; margin: 18px 0 20px; max-width: 600px; }
+    h1 span { color: var(--teal); }
+    .hero-copy { color: var(--muted); font-size: 17px; max-width: 510px; margin: 0 0 27px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .trust-row { margin-top: 30px; display: flex; gap: 18px; align-items: center; color: var(--muted); font-size: 13px; }
+    .avatar-stack { display: flex; padding-left: 5px; }
+    .avatar { width: 31px; height: 31px; border-radius: 50%; margin-left: -5px; display: grid; place-items: center; border: 2px solid var(--paper); font-size: 14px; background: #e8d9ca; }
+    .avatar:nth-child(2) { background: #d3e6db; }.avatar:nth-child(3) { background: #efdbd3; }
+    .hero-visual { position: relative; min-height: 418px; display: grid; place-items: center; }
+    .hero-blob { position: absolute; width: 390px; height: 370px; border-radius: 46% 54% 55% 45% / 48% 46% 54% 52%; background: #dcefe8; transform: rotate(-8deg); }
+    .doctor-card { position: relative; width: min(370px, 90%); padding: 27px; border: 1px solid #ffffffc7; background: rgba(255,255,255,.92); border-radius: 24px; box-shadow: var(--shadow); }
+    .doctor-top { display: flex; align-items: center; gap: 15px; }
+    .doctor-photo { width: 62px; height: 62px; border-radius: 20px; display: grid; place-items: center; font-size: 30px; background: linear-gradient(145deg,#f3d9c9,#f4eee6); }
+    .doctor-name { font-weight: 800; font-size: 17px; }.doctor-title { color: var(--muted); font-size: 13px; }
+    .online { margin-left: auto; align-self: flex-start; width: 10px; height: 10px; background: #4ab28a; border-radius: 50%; box-shadow: 0 0 0 5px #e6f5ee; }
+    .divider { height: 1px; background: var(--line); margin: 21px 0; }
+    .quote { color: #536b66; font-size: 14px; margin: 0 0 19px; }
+    .availability { background: #f1f8f5; border-radius: 14px; padding: 14px; display: flex; align-items: center; justify-content: space-between; font-size: 13px; }
+    .availability strong { color: var(--teal); }
+    .floating-note { position: absolute; z-index: 1; background: white; border-radius: 15px; padding: 12px 16px; box-shadow: var(--shadow); font-size: 13px; font-weight: 700; }
+    .floating-note.one { right: 0; top: 52px; }.floating-note.two { left: 0; bottom: 52px; }
+    .note-icon { margin-right: 7px; }
+    .section { padding: 68px 0; }
+    .section-heading { text-align: center; max-width: 620px; margin: 0 auto 34px; }
+    .section-heading h2 { font-size: clamp(29px, 4vw, 40px); line-height: 1.18; letter-spacing: -1.2px; margin: 10px 0; }
+    .section-heading p { color: var(--muted); margin: 0; }
+    .services { background: #fff; }
+    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .service-card { padding: 25px; border: 1px solid var(--line); border-radius: 19px; transition: .2s; }
+    .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .service-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 15px; background: var(--mint); font-size: 23px; }
+    .service-card h3 { font-size: 17px; margin: 17px 0 6px; }.service-card p { color: var(--muted); font-size: 14px; margin: 0; }
+    .consult { padding: 74px 0; }
+    .consult-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: 55px; align-items: start; }
+    .consult-intro { position: sticky; top: 25px; }
+    .consult-intro h2 { font-size: 40px; line-height: 1.15; letter-spacing: -1.5px; margin: 13px 0; }
+    .consult-intro p { color: var(--muted); }
+    .safety-note { border-left: 3px solid #e6a14c; background: #fff8eb; border-radius: 0 12px 12px 0; padding: 13px 15px; color: #745a35; font-size: 13px; margin-top: 23px; }
+    .chat-card { background: white; border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); overflow: hidden; }
+    .chat-header { display: flex; align-items: center; gap: 12px; padding: 17px 21px; border-bottom: 1px solid var(--line); }
+    .chat-avatar { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 14px; background: var(--mint); font-size: 20px; }
+    .chat-heading { font-weight: 800; font-size: 14px; }.chat-status { color: var(--muted); font-size: 12px; }
+    .chat-body { padding: 22px; }
+    .message { max-width: 88%; padding: 13px 15px; border-radius: 4px 16px 16px 16px; background: #f1f7f4; color: #425c56; font-size: 14px; margin-bottom: 14px; }
+    .message.user { margin-left: auto; background: var(--teal); color: white; border-radius: 16px 4px 16px 16px; }
+    .message.alert { max-width: 100%; background: #fff3ef; border: 1px solid #f4d0c6; color: #804736; }
+    .chat-form { display: flex; gap: 9px; padding-top: 8px; }
+    .chat-form input { width: 100%; min-width: 0; border: 1px solid #dce8e3; border-radius: 12px; padding: 12px 14px; outline: 0; }
+    .chat-form input:focus, .field input:focus, .field select:focus, .field textarea:focus { border-color: #69ab9e; box-shadow: 0 0 0 3px #167c7014; }
+    .chat-disclaimer { margin: 12px 0 0; font-size: 11px; color: #82928e; }
+    .booking { background: #eaf5f1; }
+    .booking-card { width: min(790px,100%); margin: auto; background: white; padding: 30px; border-radius: 22px; box-shadow: var(--shadow); }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 17px; }
+    .field { display: flex; flex-direction: column; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { font-size: 13px; font-weight: 700; }
+    .field input, .field select, .field textarea { border: 1px solid #dce8e3; border-radius: 11px; padding: 11px 12px; outline: none; background: white; color: var(--ink); }
+    .field textarea { min-height: 95px; resize: vertical; }
+    .form-foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 20px; }
+    .privacy { font-size: 12px; color: var(--muted); }
+    .faq-grid { max-width: 770px; margin: auto; }
+    details { border-bottom: 1px solid var(--line); padding: 17px 3px; }
+    summary { cursor: pointer; font-weight: 700; list-style: none; display: flex; justify-content: space-between; gap: 15px; }
+    summary::after { content: '+'; color: var(--teal); font-size: 20px; line-height: 1; }
+    details[open] summary::after { content: '−'; }
+    details p { color: var(--muted); font-size: 14px; margin: 12px 0 0; }
+    footer { padding: 28px 0; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); background: white; }
+    .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .toast { position: fixed; bottom: 22px; left: 50%; transform: translate(-50%, 18px); opacity: 0; pointer-events: none; z-index: 5; background: #173a37; color: white; padding: 13px 18px; border-radius: 12px; box-shadow: var(--shadow); transition: .25s; font-size: 14px; max-width: calc(100% - 30px); }
+    .toast.show { transform: translate(-50%, 0); opacity: 1; }
+    @media (max-width: 800px) {
+      .nav-links { display: none; }.hero { padding-top: 48px; }.hero-grid { grid-template-columns: 1fr; gap: 20px; }.hero-visual { min-height: 360px; }.hero-blob { width: 320px; height: 315px; }.floating-note.one { right: 3%; }.floating-note.two { left: 3%; }
+      .service-grid { grid-template-columns: 1fr; }.service-card { padding: 20px; }.consult-grid { grid-template-columns: 1fr; gap: 24px; }.consult-intro { position: static; }.consult-intro h2 { font-size: 34px; }
+    }
+    @media (max-width: 520px) {
+      .container { width: min(100% - 30px, 1120px); }.topbar { height: 68px; }.brand { font-size: 18px; }.topbar .button { padding: 9px 12px; font-size: 12px; }
+      .hero { padding: 42px 0 38px; }h1 { font-size: 43px; letter-spacing: -2px; }.hero-copy { font-size: 15px; }.hero-visual { min-height: 325px; }.hero-blob { width: 290px; height: 280px; }.doctor-card { padding: 21px; }.floating-note { font-size: 11px; padding: 10px 12px; }.floating-note.one { top: 28px; }.floating-note.two { bottom: 27px; }
+      .section { padding: 52px 0; }.booking-card { padding: 21px 17px; }.form-grid { grid-template-columns: 1fr; }.field.full { grid-column: auto; }.form-foot { align-items: stretch; flex-direction: column; }.chat-body { padding: 17px; }.chat-form .button { padding: 10px 13px; }.footer-row { flex-direction: column; align-items: flex-start; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="container nav" aria-label="Điều hướng chính">
+      <a class="brand" href="#home" aria-label="An Tâm - Trang chủ">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span>
+        An Tâm
+      </a>
+      <div class="nav-links"><a href="#dich-vu">Dịch vụ</a><a href="#tu-van">Tư vấn sức khỏe</a><a href="#dat-lich">Đặt lịch</a><a href="#cau-hoi">Câu hỏi thường gặp</a></div>
+      <a class="button button-small" href="#dat-lich">Đặt lịch khám <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow"><span class="eyebrow-dot"></span> Chăm sóc sức khỏe tận tâm</div>
+          <h1>Lắng nghe cơ thể. <span>An tâm</span> chăm sóc.</h1>
+          <p class="hero-copy">Kết nối với đội ngũ tư vấn sức khỏe, tìm hiểu thông tin đáng tin cậy và đặt lịch khám phù hợp — ngay khi bạn cần.</p>
+          <div class="hero-actions"><a class="button" href="#tu-van">Bắt đầu tư vấn <span aria-hidden="true">→</span></a><a class="button button-outline" href="#dich-vu">Khám phá dịch vụ</a></div>
+          <div class="trust-row"><div class="avatar-stack" aria-hidden="true"><span class="avatar">👩🏻‍⚕️</span><span class="avatar">👨🏻‍⚕️</span><span class="avatar">👩🏽‍⚕️</span></div><span>Đồng hành cùng bạn trên hành trình khỏe mạnh</span></div>
+        </div>
+        <div class="hero-visual" aria-label="Thông tin đội ngũ tư vấn">
+          <div class="hero-blob"></div>
+          <div class="floating-note one"><span class="note-icon">💚</span>Lắng nghe, không phán xét</div>
+          <div class="doctor-card">
+            <div class="doctor-top"><div class="doctor-photo" aria-hidden="true">👩🏻‍⚕️</div><div><div class="doctor-name">Đội ngũ An Tâm</div><div class="doctor-title">Tư vấn và hướng dẫn sức khỏe</div></div><span class="online" title="Sẵn sàng hỗ trợ"></span></div>
+            <div class="divider"></div>
+            <p class="quote">“Mỗi câu hỏi đều xứng đáng được lắng nghe. Hãy chia sẻ điều bạn đang băn khoăn — chúng tôi sẽ giúp bạn tìm bước tiếp theo phù hợp.”</p>
+            <div class="availability"><span>🌿 Hỗ trợ tận tình</span><strong>Luôn sẵn sàng lắng nghe</strong></div>
+          </div>
+          <div class="floating-note two"><span class="note-icon">🔒</span>Ưu tiên quyền riêng tư</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="dich-vu">
+      <div class="container">
+        <div class="section-heading"><div class="eyebrow"><span class="eyebrow-dot"></span> Chúng tôi có thể giúp gì?</div><h2>Chăm sóc bắt đầu từ một cuộc trò chuyện</h2><p>Tìm hiểu các lựa chọn hỗ trợ để bạn chủ động hơn trong việc chăm sóc sức khỏe.</p></div>
+        <div class="service-grid">
+          <article class="service-card"><div class="service-icon" aria-hidden="true">💬</div><h3>Tư vấn sức khỏe</h3><p>Chia sẻ điều bạn đang quan tâm và nhận hướng dẫn chung về bước tiếp theo nên cân nhắc.</p></article>
+          <article class="service-card"><div class="service-icon" aria-hidden="true">🩺</div><h3>Đặt lịch khám</h3><p>Gửi yêu cầu đặt lịch để được liên hệ xác nhận thời gian và hình thức khám phù hợp.</p></article>
+          <article class="service-card"><div class="service-icon" aria-hidden="true">📚</div><h3>Thông tin dễ hiểu</h3><p>Tiếp cận thông tin sức khỏe gần gũi, giúp bạn chuẩn bị tốt hơn cho cuộc trao đổi với nhân viên y tế.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="consult" id="tu-van">
+      <div class="container consult-grid">
+        <div class="consult-intro"><div class="eyebrow"><span class="eyebrow-dot"></span> Góc chia sẻ</div><h2>Bạn đang băn khoăn điều gì?</h2><p>Hãy mô tả ngắn gọn điều bạn muốn tìm hiểu. Công cụ này chỉ cung cấp hướng dẫn chung, không chẩn đoán hay thay thế tư vấn trực tiếp từ nhân viên y tế.</p><div class="safety-note"><strong>Khẩn cấp?</strong> Nếu bạn hoặc người bên cạnh khó thở, đau ngực dữ dội, bất tỉnh, chảy máu nhiều hoặc có dấu hiệu đột quỵ, hãy gọi <strong>115</strong> tại Việt Nam hoặc đến cơ sở cấp cứu gần nhất ngay.</div></div>
+        <div class="chat-card">
+          <div class="chat-header"><div class="chat-avatar" aria-hidden="true">🌱</div><div><div class="chat-heading">Trợ lý An Tâm</div><div class="chat-status">Hướng dẫn thông tin sức khỏe chung</div></div></div>
+          <div class="chat-body"><div id="chat-messages" aria-live="polite"><div class="message">Xin chào! Bạn có thể chia sẻ điều đang khiến mình lo lắng. Không cần ghi tên, số điện thoại hay thông tin nhận dạng cá nhân nhé.</div></div>
+            <form class="chat-form" id="chat-form"><label for="question" class="sr-only" style="position:absolute;left:-10000px">Nội dung bạn muốn hỏi</label><input id="question" name="question" maxlength="500" placeholder="Ví dụ: Tôi muốn chuẩn bị gì trước khi đi khám?" autocomplete="off" required /><button class="button" type="submit" aria-label="Gửi câu hỏi">Gửi</button></form>
+            <p class="chat-disclaimer">Không gửi thông tin cá nhân hoặc nội dung khẩn cấp. Tin nhắn chỉ hiển thị trên trang này, không được gửi đến bác sĩ.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section booking" id="dat-lich">
+      <div class="container">
+        <div class="section-heading"><div class="eyebrow"><span class="eyebrow-dot"></span> Hẹn gặp chúng tôi</div><h2>Gửi yêu cầu đặt lịch</h2><p>Để lại thông tin liên hệ cơ bản. Đây là bản demo — biểu mẫu chưa gửi dữ liệu đến cơ sở y tế.</p></div>
+        <form class="booking-card" id="booking-form">
+          <div class="form-grid">
+            <div class="field"><label for="name">Tên của bạn</label><input id="name" name="name" autocomplete="name" placeholder="Ví dụ: Nguyễn An" required /></div>
+            <div class="field"><label for="phone">Số điện thoại</label><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="09xx xxx xxx" required /></div>
+            <div class="field"><label for="visit-type">Hình thức mong muốn</label><select id="visit-type" name="visit-type"><option>Tư vấn trực tiếp</option><option>Tư vấn qua điện thoại</option><option>Tôi cần được hướng dẫn thêm</option></select></div>
+            <div class="field"><label for="visit-date">Ngày mong muốn</label><input id="visit-date" name="visit-date" type="date" /></div>
+            <div class="field full"><label for="booking-note">Ghi chú (không bắt buộc)</label><textarea id="booking-note" name="booking-note" maxlength="300" placeholder="Vui lòng không nhập thông tin sức khỏe nhạy cảm vào bản demo này."></textarea></div>
+          </div>
+          <div class="form-foot"><div class="privacy">🔒 Thông tin chỉ dùng để minh họa trong bản demo này.</div><button class="button" type="submit">Gửi yêu cầu <span aria-hidden="true">→</span></button></div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" id="cau-hoi">
+      <div class="container"><div class="section-heading"><div class="eyebrow"><span class="eyebrow-dot"></span> Giải đáp nhanh</div><h2>Câu hỏi thường gặp</h2></div>
+        <div class="faq-grid">
+          <details><summary>Trợ lý An Tâm có thể chẩn đoán bệnh không?</summary><p>Không. Trợ lý chỉ đưa ra hướng dẫn sức khỏe chung và không thể thay thế việc khám, chẩn đoán hoặc điều trị bởi nhân viên y tế. Hãy trao đổi với bác sĩ về triệu chứng cụ thể của bạn.</p></details>
+          <details><summary>Yêu cầu đặt lịch có được gửi đến phòng khám không?</summary><p>Chưa. Đây là giao diện minh họa; thông tin bạn nhập không được lưu hoặc gửi đi. Trước khi sử dụng thực tế, cần tích hợp hệ thống đặt lịch an toàn và thông báo rõ cách xử lý dữ liệu.</p></details>
+          <details><summary>Tôi nên làm gì trong tình huống khẩn cấp?</summary><p>Gọi 115 tại Việt Nam hoặc đến cơ sở cấp cứu gần nhất. Đừng chờ phản hồi trên website nếu có dấu hiệu nguy hiểm.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container footer-row"><a class="brand" href="#home"><span class="brand-mark" aria-hidden="true">+</span>An Tâm</a><span>Thông tin trên trang chỉ mang tính tham khảo, không thay thế tư vấn y tế chuyên môn.</span><span>© <span id="year"></span> An Tâm</span></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    const chatForm = document.querySelector('#chat-form');
+    const chatMessages = document.querySelector('#chat-messages');
+    const toast = document.querySelector('#toast');
+    let toastTimer;
+    document.querySelector('#year').textContent = new Date().getFullYear();
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 4200);
+    }
+
+    function addMessage(text, kind = '') {
+      const message = document.createElement('div');
+      message.className = `message ${kind}`.trim();
+      message.textContent = text;
+      chatMessages.append(message);
+      message.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    chatForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const input = chatForm.elements.question;
+      const text = input.value.trim();
+      if (!text) return;
+      addMessage(text, 'user');
+      input.value = '';
+      const urgentTerms = /khó thở|khong tho duoc|không thở được|đau ngực|dau nguc|bất tỉnh|bat tinh|đột quỵ|dot quy|chảy máu nhiều|chay mau nhieu|co giật|co giat/i;
+      if (urgentTerms.test(text)) {
+        addMessage('Điều bạn mô tả có thể cần được hỗ trợ khẩn cấp. Hãy gọi 115 tại Việt Nam hoặc đến cơ sở cấp cứu gần nhất ngay; đừng chờ phản hồi qua website.', 'alert');
+      } else {
+        addMessage('Cảm ơn bạn đã chia sẻ. Mình không thể đánh giá hay chẩn đoán triệu chứng. Để được hướng dẫn phù hợp, hãy trao đổi trực tiếp với bác sĩ hoặc nhân viên y tế; nếu tình trạng nặng lên hay bạn thấy không an toàn, hãy đi cấp cứu. Đây là bản demo nên tin nhắn không được gửi đi.');
+      }
+    });
+
+    document.querySelector('#booking-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const phone = document.querySelector('#phone').value.trim();
+      if (phone.replace(/\D/g, '').length < 9) {
+        showToast('Vui lòng kiểm tra lại số điện thoại.');
+        document.querySelector('#phone').focus();
+        return;
+      }
+      showToast('Đây là bản demo: yêu cầu chưa được gửi hoặc lưu.');
+      event.currentTarget.reset();
+    });
+
+    const dateInput = document.querySelector('#visit-date');
+    dateInput.min = new Date().toISOString().split('T')[0];
+  </script>
+</body>
+</html>
